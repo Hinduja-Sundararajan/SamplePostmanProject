@@ -42,7 +42,7 @@ jobs:
         if: always()
         with:
           name: Newman-Report
-          path: ${{ github.workspace }}//newman/report.html
+          path: ${{ github.workspace }}/newman/report.html
           include-hidden-files: true
           if-no-files-found: error
           
