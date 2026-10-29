@@ -12,12 +12,11 @@ on:
 jobs:
   run-postman-tests:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./newman
     steps:
       - name: Checkout
         uses: actions/checkout@v6.1.0
+      - name: Print working directory
+        run: pwd
 
       - name: Install NodeJS and npm
         uses: actions/setup-node@v7.1.0
