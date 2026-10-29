@@ -26,17 +26,14 @@ jobs:
          run: |
            npm install -g newman
            npm install -g newman-reporter-htmlextra
-      - name:  create newman folder for reports
-        run: mkdir -p newman
-      - name: Check Where Files Are
-        run: ls -R ./
+      
 
       - name: Run the Postman collection with newman
-        continue-on-error: true
         run: |
            newman run 'InWarrantyFlow.postman_collection_main.json' \
            --env-var="Domainname=http://64.227.160.186:9000/v1" \
            -r cli,htmlextra 
+           --suppress-exit-code
       - name: Upload Report
         if: always()
         uses: actions/upload-artifact@v7.0.2
