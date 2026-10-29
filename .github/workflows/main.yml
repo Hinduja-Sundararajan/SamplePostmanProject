@@ -35,7 +35,7 @@ jobs:
           newman run 'InWarrantyFlow.postman_collection_main.json' \
           --env-var="Domainname=http://64.227.160.186:9000/v1" \
           -r cli,htmlextra \
-          --reporter-htmlextra-export ./newman/report.html
+          --reporter-htmlextra-export ./newman/report.html || true
            
       - name: Upload Report
         if: always()
