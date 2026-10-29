@@ -31,9 +31,11 @@ jobs:
 
       - name: Run the Postman collection with newman
         run: |
-           newman run 'InWarrantyFlow.postman_collection_main.json' \
-           --env-var="Domainname=http://64.227.160.186:9000/v1" \
-           -r cli,htmlextra 
+          mkdir -p newman
+          newman run 'InWarrantyFlow.postman_collection_main.json' \
+          --env-var="Domainname=http://64.227.160.186:9000/v1" \
+          -r cli,htmlextra \
+          --reporter-htmlextra-export ./newman/report.html
            
       - name: Upload Report
         if: always()
