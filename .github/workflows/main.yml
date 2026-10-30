@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6.1.0
-      - name: Print working directory
-        run: pwd
 
       - name: Install NodeJS and npm
         uses: actions/setup-node@v7.1.0
@@ -34,17 +32,22 @@ jobs:
           mkdir -p newman
           newman run 'InWarrantyFlow.postman_collection_main.json' \
           --env-var="Domainname=http://64.227.160.186:9000/v1" \
-          -r cli,htmlextra \
-          --reporter-htmlextra-export ./newman/report.html || true
+          -r cli,htmlextra
            
       - name: Upload Report
         uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: Newman-Report
-          path: ${{ github.workspace }}/newman/report.html
-          include-hidden-files: true
-          if-no-files-found: error
+          path: newman/*.html
+
+      - name: creating github page branch
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: newman/
+          
           
 
            
