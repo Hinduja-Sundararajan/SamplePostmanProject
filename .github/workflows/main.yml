@@ -32,7 +32,8 @@ jobs:
           mkdir -p newman
           newman run 'InWarrantyFlow.postman_collection_main.json' \
           --env-var="Domainname=http://64.227.160.186:9000/v1" \
-          -r cli,htmlextra
+          -r cli,htmlextra \
+          --reporter-htmlextra-export ./newman/index.html
            
       - name: Upload Report
         uses: actions/upload-artifact@v7.0.2
