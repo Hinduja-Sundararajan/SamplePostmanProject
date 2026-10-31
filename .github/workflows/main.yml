@@ -1,13 +1,11 @@
 name : postman collection workflow
 
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
   schedule:
     - cron: 30 00 * * *
-    - cron: 00 10 * * 1-5
 
 jobs:
   run-postman-tests:
@@ -30,8 +28,9 @@ jobs:
       - name: Run the Postman collection with newman
         run: |
           mkdir -p newman
-          newman run 'InWarrantyFlow.postman_collection_main.json' \
+          newman run Phoenix-InWarrantyFlow.postman_collection.json \
           --env-var="Domainname=http://64.227.160.186:9000/v1" \
+          -d testdata.csv
           -r cli,htmlextra \
           --reporter-htmlextra-export ./newman/index.html
            
