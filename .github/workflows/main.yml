@@ -27,7 +27,6 @@ jobs:
 
       - name: Run the Postman collection with newman
         run: |
-          mkdir -p newman
           newman run Phoenix-InWarrantyFlow.postman_collection.json \
           --env-var="Domainname=http://64.227.160.186:9000/v1" \
           -d testdata.csv
@@ -39,7 +38,7 @@ jobs:
         if: always()
         with:
           name: Newman-Report
-          path: newman/index.html
+          path: ./newman/index.html
 
       - name: creating github page branch
         if: always()
