@@ -47,7 +47,7 @@ To run the project on your local system:
 3. Install Newman :``` npm install -g newman ```
 4. Install Newman-reporter-htmlextra :``` npm install -g newman-reporter-htmlextra ```
 5. Run the Newman command :```
-           newman run 'InWarrantyFlow.postman_collection_main.json' \
+           newman run 'Phoenix-InWarrantyFlow.postman_collection.json' \
            --env-var="Domainname=http://64.227.160.186:9000/v1" \
            -r cli,htmlextra \
            --reporter-htmlextra-export ./newman/index.html   ```
@@ -56,8 +56,7 @@ To run the project on your local system:
 ```
 SamplePostmanProject
 └─ inwarranty flow
-   ├─ InWarrantyFlow.postman_collection.json #collection file which uses user-defined testdata
-   ├─ InWarrantyFlow.postman_collection_main.json #collection file which uses random testdata
+   ├─ Phoenix-InWarrantyFlow.postman_collection.json #collection file
    └─ testdata.csv #test data file
 
 ```
