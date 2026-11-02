@@ -27,9 +27,10 @@ jobs:
 
       - name: Run the Postman collection with newman
         run: |
+          mkdir -p newman
           newman run Phoenix-InWarrantyFlow.postman_collection.json \
           --env-var="Domainname=http://64.227.160.186:9000/v1" \
-          -d testdata.csv
+          -d testdata.csv \
           -r cli,htmlextra \
           --reporter-htmlextra-export ./newman/index.html
            
